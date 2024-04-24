@@ -40,16 +40,7 @@ dailyWeather := weather.ConvertWeatherToGeneralizedStructWeather()
 var messages []string
 
 for i :=0 ; i<len(dailyWeather); i++ {
-	message := fmt.Sprintf("Weather forcast for %v, with the minimum temperature of %.2f celcius, and maximum of %.2f celcius",
-	dailyWeather[i].EffectiveDate, dailyWeather[i].MinTemperature, dailyWeather[i].MaxTemperature)
-	if dailyWeather[i].DayPrecipitation{
-		message = fmt.Sprintf(message+ ", "+ "during the day, it's going to %v, wht the intensity of %v", dailyWeather[i].DayPrecipitationType,
-		dailyWeather[i].DayPrecipitationIntensity)
-	}
-	if dailyWeather[i].NightPrecipitation{
-		message = fmt.Sprintf(message+ ", "+ "during the night, it's going to %v, wht the intensity of %v", dailyWeather[i].NightPrecipitationType,
-		dailyWeather[i].NightPrecipitationIntensity)
-	}
+	message := dailyWeather[i].MessageFormat()
 	messages = append(messages, message)
 }
 
